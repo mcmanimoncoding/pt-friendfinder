@@ -6,17 +6,17 @@ module.exports = function (app){
     });
 
     app.post("/api/friends", function(req,res){
-        console.log(req.body)
+        console.log(req.body);
 
         //create variable for inserting best match
-        let user = req.body;
+        let userData = req.body;
         let userScore = user.scores;
         let relativeFriendScore;
         let scoreDiff = 0;
         let bestFriend = {
             name: "",
             photo: "",
-            difference: ""
+            difference: 100
         }
 
         console.log(userScore);
@@ -39,11 +39,11 @@ module.exports = function (app){
 
         }
 
+        friends.push(userData);
+        res.json(bestFriend);
     })
 
-    friends.push(user);
-    res.json(bestFriend);
 
-    
+
 }
 
